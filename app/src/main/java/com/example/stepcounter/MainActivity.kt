@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         resetButton.setOnClickListener {
             prevSteps = totalSteps
             stepsMorning = 0
-            stepMorning.text = "Steps Taken This morning: 0"
+            stepMorning.text = "0"
             stepCurrent.text = "0"
             progressBar.setProgressWithAnimation(0f)
             saveData()
@@ -130,15 +130,17 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         // Calculate current steps
         totalSteps = event.values[0]
         val currentSteps = (totalSteps - prevSteps).toInt()
+
         updateStepCountViews(currentSteps)
-        animateProgressBar(currentSteps.toFloat())
+        progressBar.setProgressWithAnimation(currentSteps.toFloat())
 
         // Only updates steps morning if condition hour satisfied
-        if (currentHour in 15..17) {
+        if (currentHour in 6..12) {
             stepsMorning = currentSteps
             saveMorningSteps()
         }
-        stepMorning.text = "Steps Taken This morning: $stepsMorning"
+
+        stepMorning.text = "$stepsMorning"
     }
 
     // Function to handle accelerometer sensor events
@@ -159,12 +161,13 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 stepsMorning++
                 saveMorningSteps()
             }
-            stepMorning.text = "Steps Taken This morning: $stepsMorning"
+            stepMorning.text = "$stepsMorning"
         }
 
         val step: Int = totalSteps.toInt()
         updateStepCountViews(step)
-        animateProgressBar(step.toFloat())
+
+        progressBar.setProgressWithAnimation(step.toFloat())
     }
 
     // Function to update step count views
@@ -174,12 +177,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
         // Set since last reboot step count
         val stepsReboot = totalSteps.toInt()
-        stepReboot.text =  "Steps Taken since last reboot: $stepsReboot"
-    }
+        stepReboot.text =  "$stepsReboot"
 
-    // Function to animate progress bar
-    private fun animateProgressBar(steps: Float) {
-        progressBar.setProgressWithAnimation(steps)
+        stepMorning.text = "$stepsMorning"
     }
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {

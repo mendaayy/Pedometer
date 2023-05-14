@@ -3,86 +3,182 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#2F2F2F"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     tools:context=".MainActivity">
 
-    <!--    Progress Bar-->
+    <!-- Heading -->
+    <TextView
+        android:id="@+id/label_daily_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Daily Activity"
+        android:textColor="#F2F2F2"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp" />
 
+    <!-- Progress Bar -->
     <com.mikhaellopez.circularprogressbar.CircularProgressBar
         android:id="@+id/progress_circular"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerInParent="true"
-        app:cpb_background_progressbar_color="#F2F2F2"
-        app:cpb_background_progressbar_width="20dp"
+        android:layout_width="270dp"
+        android:layout_height="270dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"
+        app:cpb_background_progressbar_color="#898989"
+        app:cpb_background_progressbar_width="10dp"
         app:cpb_progress_direction="to_right"
-        app:cpb_progress_max="3000"
-        app:cpb_progressbar_color="#3f51b5"
-        app:cpb_progressbar_width="15dp" />
+        app:cpb_progress_max="3500"
+        app:cpb_progressbar_color="@color/white"
+        app:cpb_progressbar_width="10dp" />
 
-    <!-- TextView Steps Taken Since Last Reboot -->
-    <TextView
-        android:id="@+id/step_since_reboot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/step_morning"
-        android:layout_centerInParent="true"
-        android:text="Steps Taken since last reboot: "
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-
-    <!--    TextView Current Steps-->
-
-    <TextView
-        android:id="@+id/step_morning"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/progress_circular"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="100dp"
-        android:text="Steps Taken This morning: "
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-
-
-    <!--    TextView Current Steps-->
+    <!-- Current Step -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="#F2F2F2"
         android:text="0"
-        android:textStyle="normal|bold|italic"
-        android:textSize="35dp"
-        android:layout_centerInParent="true"
-        android:id="@+id/step_current"
-        />
+        android:textStyle="normal|bold"
+        android:textSize="55dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:id="@+id/step_current" />
 
-    <!--    TextView Goal-->
+    <!-- Step Count -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="/ 3000"
-        android:textStyle="normal|bold|italic"
-        android:textSize="15dp"
+        android:layout_below="@+id/step_current"
+        android:textColor="#F2F2F2"
+        android:layout_centerInParent="true"
+        android:text="Step Count"
+        android:textSize="25dp"
+        android:layout_marginTop="5dp"
+        android:textStyle="normal|bold" />
+
+    <!-- Step Goal -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/step_current"
         android:layout_centerInParent="true"
-        />
+        android:layout_marginTop="70dp"
+        android:text="Step Goal: 3500"
+        android:textColor="#898989"
+        android:textSize="14dp"
+        android:textStyle="normal|bold" />
+
+    <!-- Items -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="60dp"
+        android:layout_below="@id/progress_circular"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp">
+
+        <!-- Morning Steps -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/label_morning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#F2F2F2"
+                android:text="Morning"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/progress_circular"
+                android:layout_alignParentStart="true">
+
+            <TextView
+                android:id="@+id/step_morning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#F2F2F2"
+                android:text="0"
+                android:textStyle="normal|bold"
+                android:textSize="38dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#F2F2F2"
+                android:text=" steps"
+                android:textSize="20sp"
+                android:textStyle="normal" />
+
+            </LinearLayout>
+        </LinearLayout>
 
 
+        <!-- Since Reboot -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp">
+
+            <TextView
+                android:id="@+id/label_reboot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#F2F2F2"
+                android:text="Since Reboot"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/progress_circular"
+                android:layout_alignParentStart="true">
+
+            <TextView
+                android:id="@+id/step_since_reboot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#F2F2F2"
+                android:text="0"
+                android:textStyle="normal|bold"
+                android:textSize="38dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#F2F2F2"
+                android:text=" steps"
+                android:textSize="20sp"
+                android:textStyle="normal" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 
     <!-- Reset Button -->
-
-
-
     <Button
         android:id="@+id/btn_reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Reset Steps"
+        android:layout_marginBottom="40dp"
+        android:text="Reset Count"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"/>
 
 
 </RelativeLayout>
