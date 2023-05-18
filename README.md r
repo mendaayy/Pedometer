@@ -12,8 +12,7 @@ of the device. In the end, you can reset the step count or it can reset automati
 - Android studio
 
 ## Process
-It was my first time creating an Android app, so I had to learn the basics first through  
-
+It was my first time creating an Android app, so I had to learn the basics first through tutorials. I also chose to use XML instead of Jetpack compose, because you can find more recourses about it online. When I was coding the project, I spent a lot of time retrieving the data from the sensor. I did not know that different android phones have different motion sensors for the step count. I was using the sensor type of accelerometer while my android phone has the step-counter as the sensor type. I thought it wasn't working due to bugs, but it was simply just not using the right sensor. So, now my code works, for both sensor types. In the end, I did a simple UI with e progess circularbar library.
 
 ## UI
 <img width="293" alt="Screenshot 2023-05-19 at 00 42 43" src="https://github.com/mendaayy/Pedometer/assets/122844229/d1dea7fc-d78b-4cbb-a336-4403f8a01e55">
